@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class InsertionSort {
+    public static void main(String[] args) {
+        System.out.println("Input a sequence of numbers:");
+        Scanner scanner = new Scanner(System.in);
+        int[] numbers = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+
+        sort(numbers);
+
+        System.out.println("Sorted sequence(ascending):");
+        Arrays.stream(numbers).forEach(n -> System.out.print(n + " "));
+        System.out.println();
+
+        scanner.close();
+    }
+
+    private static void sort(int[] numbers) {
+        for (int i = 1; i < numbers.length; i++) {
+            int current = numbers[i];
+            int j = i - 1;
+            while (j >= 0 && numbers[j] > current) {
+                numbers[j + 1] = numbers[j];
+                j--;
+            }
+            numbers[j + 1] = current;
+        }
+    }
+}
