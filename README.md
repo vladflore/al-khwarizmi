@@ -37,11 +37,6 @@ A compendium of algorithms and their implementations in different languages with
 |tbi   	    |Binary Index Tree                                          |                               |                   |
 |tbi   	    |Bloom filter                                               |                               |                   |
 |tbi   	    |Buy and sell a stock once<br>Max subarray sum              |                               |                   |
-|tbi   	    |Reverse string                                             |                               |                   |
-|tbi   	    |Valid palindrome                                           |                               |                   |
-|tbi   	    |Vacuum cleaner route                                       |                               |                   |
-|tbi   	    |Correct capitalization                                     |                               |                   |
-|tbi   	    |Add binary                                                 |                               |                   |
 
 Legend:
 * i -> implemented
