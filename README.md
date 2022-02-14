@@ -14,16 +14,10 @@ A compendium of algorithms and their implementations in different languages with
 |tbi   	    |Radix sort                                                 |                               |                   |
 |tbi   	    |Heap sort                                                  |                               |                   |
 |i   	    |Binary search                                              |Python   	                    |No vizualization   |
-|tbi   	    |1-D peak finding                                           |                               |                   |
-|tbi   	    |2-D peak finding                                           |                               |                   |
 |tbi   	    |BFS                                                        |                               |                   |
 |tbi   	    |DFS                                                        |                               |                   |
 |tbi   	    |Dijkstra                                                   |                               |                   |
 |tbi   	    |KNN algorithm                                              |                               |                   |
-|tbi   	    |Longest common substring                                   |                               |                   |
-|tbi   	    |Longest common subsequence                                 |                               |                   |
-|tbi   	    |Travelling salesperson                                     |                               |                   |
-|tbi   	    |Set-covering problem                                       |                               |                   |
 |tbi   	    |Bellman-Ford                                               |                               |                   |
 |tbi   	    |Fourier transform                                          |                               |                   |
 |tbi   	    |MapReduce                                                  |                               |                   |
@@ -34,12 +28,8 @@ A compendium of algorithms and their implementations in different languages with
 |tbi   	    |Simplex                                                    |                               |                   |
 |tbi   	    |Union Find                                                 |                               |                   |
 |tbi   	    |Trie                                                       |                               |                   |
-|tbi   	    |Binary Index Tree                                          |                               |                   |
+|tbi   	    |Binary Indexed Tree(Fenwick Tree)                          |                               |                   |
 |tbi   	    |Bloom filter                                               |                               |                   |
-|tbi   	    |Buy and sell a stock once<br>Max subarray sum              |                               |                   |
-|tbi   	    |Reverse string                                             |                               |                   |
-|tbi   	    |Valid palindrome                                           |                               |                   |
-|tbi   	    |Vacuum cleaner route                                       |                               |                   |
 
 Legend:
 * i -> implemented
