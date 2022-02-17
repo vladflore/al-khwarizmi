@@ -3,8 +3,23 @@ from manim import *
 
 class BinarySearchAnimated(Scene):
     def construct(self):
-        self.intro('Binary search')
-        # tbd
+        # self.intro('Binary search')
+        numbers = range(1, 6)
+        for n in numbers:
+            number = self.create_number(n)
+            number.shift(n*0.5*RIGHT)
+            self.play(FadeIn(number), run_time=0.5)
+
+        self.wait()
+
+
+    def create_number(self, value):
+        square = Square(0.5)
+        digit = Text(str(value)).scale(0.3)
+        square.add(digit)
+
+        return square
+
 
     def intro(self, subtitle):
         my_site = Text("vladflore.tech", font="Noto Sans").scale(0.75)
