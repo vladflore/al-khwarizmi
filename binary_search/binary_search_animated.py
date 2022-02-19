@@ -8,8 +8,8 @@ class BinarySearchAnimated(Scene):
     def construct(self):
         # self.intro('Binary search')
 
-        list_of_numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34]
-        target = 2
+        list_of_numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 29, 31]
+        target = 31
         low, high = 0, len(list_of_numbers)-1
         mid = (low+high)//2
 
@@ -27,21 +27,25 @@ class BinarySearchAnimated(Scene):
             idx_mobject = Integer(number=idx).scale(
                 0.3).next_to(number_mobject, UP)
 
-            self.play(FadeIn(number_mobject, idx_mobject))
+            self.play(FadeIn(number_mobject, idx_mobject), run_time=0.25)
 
         self.wait()
 
+        find = Text("Target = " + str(target),
+                    font_size=12).next_to(list_of_mobjects[-1], RIGHT)
+        self.add(find)
+
         low_integer = Integer(number=low).scale(0.4)
         low_text = VGroup(Text(
-            "low =", font_size=12), low_integer).arrange(direction=RIGHT, buff=0.1).set_color(BLUE)
+            "low idx =", font_size=12), low_integer).arrange(direction=RIGHT, buff=0.1).set_color(BLUE)
 
         mid_integer = Integer(number=low).scale(0.4)
         mid_text = VGroup(Text(
-            "mid =", font_size=12), mid_integer).arrange(direction=RIGHT, buff=0.1).set_color(ORANGE)
+            "mid idx =", font_size=12), mid_integer).arrange(direction=RIGHT, buff=0.1).set_color(ORANGE)
 
         high_integer = Integer(number=low).scale(0.4)
         high_text = VGroup(Text(
-            "high =", font_size=12), high_integer).arrange(direction=RIGHT, buff=0.1).set_color(YELLOW)
+            "high idx =", font_size=12), high_integer).arrange(direction=RIGHT, buff=0.1).set_color(YELLOW)
 
         low_integer.add_updater(lambda l: l.set_value(low))
         mid_integer.add_updater(lambda m: m.set_value(mid))
@@ -57,28 +61,28 @@ class BinarySearchAnimated(Scene):
         high_mobject = list_of_mobjects[high]
         high_mobject.set_color(color=YELLOW)
 
-        mid_mobject = None
         while(low <= high):
             mid = (low+high)//2
-            if mid_mobject is not None:
-                mid_mobject.set_color(color=WHITE)
             mid_mobject = list_of_mobjects[mid]
             mid_mobject.set_color(color=ORANGE)
             self.wait()
             if list_of_numbers[mid] == target:
                 low_mobject.set_color(color=WHITE)
+                mid_mobject.set_color(color=WHITE)
                 high_mobject.set_color(color=WHITE)
                 list_of_mobjects[mid].set_color(GREEN)
                 self.wait()
                 break
             elif list_of_numbers[mid] < target:
                 low = mid + 1
+                mid_mobject.set_color(color=WHITE)
                 low_mobject.set_color(color=WHITE)
                 low_mobject = list_of_mobjects[low]
                 low_mobject.set_color(color=BLUE)
                 self.wait()
             else:
                 high = mid - 1
+                mid_mobject.set_color(color=WHITE)
                 high_mobject.set_color(color=WHITE)
                 high_mobject = list_of_mobjects[high]
                 high_mobject.set_color(color=YELLOW)
