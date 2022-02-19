@@ -1,37 +1,56 @@
 from typing import List
 
 from manim import *
+from numpy import number
 
 
 class BinarySearchAnimated(Scene):
     def construct(self):
         # self.intro('Binary search')
 
-        list_of_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        target = 6
+        list_of_numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34]
+        target = 2
         low, high = 0, len(list_of_numbers)-1
         mid = (low+high)//2
 
         list_of_mobjects: List[Mobject] = []
         for idx in range(len(list_of_numbers)):
-            number_mobject = self.create_number(list_of_numbers[idx])
-            number_mobject.shift(idx*0.6*RIGHT)
+            number_mobject = self.create_number_mobject(list_of_numbers[idx])
+            if idx < len(list_of_numbers)//2:
+                number_mobject.shift(UP*2).shift(
+                    (len(list_of_numbers)//2-idx)*0.6*LEFT)
+            else:
+                number_mobject.shift(
+                    UP*2).shift((idx-len(list_of_numbers)//2)*0.6*RIGHT)
             list_of_mobjects.append(number_mobject)
-            self.play(FadeIn(number_mobject), run_time=0.5)
 
-        low_number = Integer(number=list_of_numbers[low]).set_color(BLUE)
-        high_number = Integer(number=list_of_numbers[high]).set_color(YELLOW)
-        mid_number = Integer(number=list_of_numbers[mid]).set_color(ORANGE)
+            idx_mobject = Integer(number=idx).scale(
+                0.3).next_to(number_mobject, UP)
 
-        low_number.next_to(list_of_mobjects[0], DOWN)
-        high_number.next_to(low_number, DOWN)
-        mid_number.next_to(high_number, DOWN)
+            self.play(FadeIn(number_mobject, idx_mobject))
 
-        low_number.add_updater(lambda ln: ln.set_value(list_of_numbers[low]))
-        high_number.add_updater(lambda hn: hn.set_value(list_of_numbers[high]))
-        mid_number.add_updater(lambda mn: mn.set_value(list_of_numbers[mid]))
+        self.wait()
 
-        self.add(low_number, high_number, mid_number)
+        low_integer = Integer(number=low).scale(0.4)
+        low_text = VGroup(Text(
+            "low =", font_size=12), low_integer).arrange(direction=RIGHT, buff=0.1).set_color(BLUE)
+
+        mid_integer = Integer(number=low).scale(0.4)
+        mid_text = VGroup(Text(
+            "mid =", font_size=12), mid_integer).arrange(direction=RIGHT, buff=0.1).set_color(ORANGE)
+
+        high_integer = Integer(number=low).scale(0.4)
+        high_text = VGroup(Text(
+            "high =", font_size=12), high_integer).arrange(direction=RIGHT, buff=0.1).set_color(YELLOW)
+
+        low_integer.add_updater(lambda l: l.set_value(low))
+        mid_integer.add_updater(lambda m: m.set_value(mid))
+        high_integer.add_updater(lambda h: h.set_value(high))
+
+        vg = VGroup(low_text, mid_text, high_text).arrange(direction=DOWN, buff=0.2).next_to(
+            list_of_mobjects[0], DOWN)
+
+        self.add(vg)
 
         low_mobject = list_of_mobjects[low]
         low_mobject.set_color(color=BLUE)
@@ -43,7 +62,6 @@ class BinarySearchAnimated(Scene):
             mid = (low+high)//2
             if mid_mobject is not None:
                 mid_mobject.set_color(color=WHITE)
-                self.wait()
             mid_mobject = list_of_mobjects[mid]
             mid_mobject.set_color(color=ORANGE)
             self.wait()
@@ -58,17 +76,17 @@ class BinarySearchAnimated(Scene):
                 low_mobject.set_color(color=WHITE)
                 low_mobject = list_of_mobjects[low]
                 low_mobject.set_color(color=BLUE)
-                self.wait(2)
+                self.wait()
             else:
                 high = mid - 1
                 high_mobject.set_color(color=WHITE)
                 high_mobject = list_of_mobjects[high]
                 high_mobject.set_color(color=YELLOW)
-                self.wait(2)
+                self.wait()
 
         self.wait()
 
-    def create_number(self, value):
+    def create_number_mobject(self, value):
         square = Square(0.5)
         digit = Text(str(value)).scale(0.3)
         square.add(digit)
