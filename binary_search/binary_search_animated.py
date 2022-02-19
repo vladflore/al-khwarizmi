@@ -1,8 +1,6 @@
-from ctypes import alignment
 from typing import List
 
 from manim import *
-from numpy import short
 
 
 class BinarySearchAnimated(Scene):
