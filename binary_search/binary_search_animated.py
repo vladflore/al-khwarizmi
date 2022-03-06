@@ -108,24 +108,19 @@ class BinarySearchAnimated(Scene):
         return square
 
     def show_theory(self):
-        title = MarkupText("Binary search", font="Noto Sans").shift(UP*2)
+        title = MarkupText("Binary search").scale(0.6).shift(UP*2)
         self.play(Write(title))
-        vg = VGroup()
-        short_description = Text("In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop,\nis a search algorithm that finds the position of a target value within a sorted array.",
-                                 font_size=14,
-                                 font="Noto Sans"
-                                 )
-        long_description = Text("Binary search compares the target value to the middle element of the array.\nIf they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,\nagain taking the middle element to compare to the target value, and repeating this until the target value is found.\nIf the search ends with the remaining half being empty, the target is not in the array.",
-                                font_size=14,
-                                font="Noto Sans"
-                                )
-        complexity = Text("The time complexity is: O(log n)",
-                          font_size=14, font="Noto Sans")
-        vg.add(short_description, long_description, complexity).arrange(
-            DOWN, aligned_edge=LEFT, buff=MED_SMALL_BUFF)
-        vg.next_to(title, DOWN, buff=MED_LARGE_BUFF)
 
-        self.play(FadeIn(vg))
+        short_description = Tex(
+            "\\justifying {In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop,\nis a search algorithm that finds the position of a target value within a sorted array.}"
+        ).scale(0.5).next_to(title, DOWN, buff=MED_LARGE_BUFF)
+        self.play(Write(short_description), run_time=2.0)
+        long_description = Tex("\\justifying {Binary search compares the target value to the middle element of the array.\nIf they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,\nagain taking the middle element to compare to the target value, and repeating this until the target value is found.\nIf the search ends with the remaining half being empty, the target is not in the array.}"
+                               ).scale(0.5).next_to(short_description, DOWN, buff=MED_LARGE_BUFF)
+        self.play(Write(long_description), run_time=2.0)
+        complexity = Tex("\\justifying {The time complexity is O(log n), where n is the length of the array.}").scale(
+            0.5).next_to(long_description, DOWN, buff=MED_LARGE_BUFF)
+        self.play(Write(complexity), run_time=2.0)
 
         self.wait(2)
 
