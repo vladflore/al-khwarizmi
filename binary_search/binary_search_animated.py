@@ -10,14 +10,14 @@ class BinarySearchAnimated(Scene):
 
         self.show_theory()
 
-        list_of_numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 29, 31]
-        target = 11
+        list_of_numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 29, 31, 37, 41]
+        target = 31
         low, high = 0, len(list_of_numbers)-1
         mid = (low+high)//2
 
         list_of_mobjects: List[Mobject] = []
-        for idx in range(len(list_of_numbers)):
-            number_mobject = self.create_number_mobject(list_of_numbers[idx])
+        for idx, number in enumerate(list_of_numbers):
+            number_mobject = self.create_number_mobject(number)
             if idx < len(list_of_numbers)//2:
                 number_mobject.shift(UP*2).shift(
                     (len(list_of_numbers)//2-idx)*0.6*LEFT)
@@ -65,38 +65,30 @@ class BinarySearchAnimated(Scene):
 
         self.add(vg)
 
-        low_mobject = list_of_mobjects[low]
-        low_mobject.set_color(color=BLUE)
-        high_mobject = list_of_mobjects[high]
-        high_mobject.set_color(color=YELLOW)
+        list_of_mobjects[low].set_color(color=BLUE)
+        list_of_mobjects[high].set_color(color=YELLOW)
 
         while(low <= high):
             mid = (low+high)//2
-            mid_mobject = list_of_mobjects[mid]
-            mid_mobject.set_color(color=ORANGE)
-            self.wait()
+            list_of_mobjects[mid].set_color(color=ORANGE)
+            self.wait(1.5)
             if list_of_numbers[mid] == target:
-                low_mobject.set_color(color=WHITE)
-                mid_mobject.set_color(color=WHITE)
-                high_mobject.set_color(color=WHITE)
-                list_of_mobjects[mid].set_color(GREEN)
+                list_of_mobjects[mid].set_color(color=GREEN)
                 target_idx.set_value(mid)
-                self.wait()
+                self.wait(1.5)
                 break
             elif list_of_numbers[mid] < target:
+                for n in list_of_mobjects[low:mid+1]:
+                    n.set_color(color=DARK_GRAY)
                 low = mid + 1
-                mid_mobject.set_color(color=WHITE)
-                low_mobject.set_color(color=WHITE)
-                low_mobject = list_of_mobjects[low]
-                low_mobject.set_color(color=BLUE)
-                self.wait()
+                list_of_mobjects[low].set_color(color=BLUE)
+                self.wait(1.5)
             else:
+                for n in list_of_mobjects[mid:high+1]:
+                    n.set_color(color=DARK_GRAY)
                 high = mid - 1
-                mid_mobject.set_color(color=WHITE)
-                high_mobject.set_color(color=WHITE)
-                high_mobject = list_of_mobjects[high]
-                high_mobject.set_color(color=YELLOW)
-                self.wait()
+                list_of_mobjects[high].set_color(color=YELLOW)
+                self.wait(1.5)
 
         self.wait(2)
 
