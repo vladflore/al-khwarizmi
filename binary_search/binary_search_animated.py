@@ -122,62 +122,20 @@ class BinarySearchAnimated(Scene):
         return square
 
     def show_theory(self):
-        title = MarkupText("Binary search").scale(0.6).shift(UP * 2)
-        self.play(Write(title))
+        theory = """
+        Binary search
 
-        short_description = (
-            Tex(
-                "{In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop,\nis a search algorithm that finds the position of a target value within a sorted array.}"
-            )
-            .scale(0.5)
-            .next_to(title, DOWN, buff=MED_LARGE_BUFF)
-        )
-        self.play(Write(short_description), run_time=2.0)
-        long_description = (
-            Tex(
-                "{Binary search compares the target value to the ",
-                "middle element",
-                " of the array.\nIf they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,\nagain taking the middle element to compare to the target value, and repeating this until the target value is found.\nIf the search ends with the remaining half being empty, the target is not in the array. --- Wikipedia}",
-            )
-            .scale(0.5)
-            .next_to(short_description, DOWN, buff=MED_LARGE_BUFF)
-        )
-        long_description[1].set_color(ORANGE)
-        self.play(Write(long_description), run_time=2.0)
-
-        long_description2 = (
-            Tex(
-                "{",
-                "To keep track of the range to search the ",
-                "target ",
-                "within, two indices ",
-                "low ",
-                "and ",
-                "high ",
-                "are used, with a third one tracking the ",
-                "middle ",
-                "element of the current range.}",
-            )
-            .scale(0.5)
-            .next_to(long_description, DOWN, buff=MED_LARGE_BUFF)
-        )
-        long_description2[2].set_color(GREEN)
-        long_description2[4].set_color(BLUE)
-        long_description2[6].set_color(YELLOW)
-        long_description2[8].set_color(ORANGE)
-        self.play(Write(long_description2), run_time=2.0)
-
-        complexity = (
-            Tex(
-                "{Binary search runs in logarithmic time, O(log n), in the worst case, where n is the length of the array.}"
-            )
-            .scale(0.5)
-            .next_to(long_description2, DOWN, buff=MED_LARGE_BUFF)
-        )
-        self.play(Write(complexity), run_time=2.0)
-
+        In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop, is a search algorithm that finds the position of a target value within a sorted array.
+        
+        Binary search compares the target value to the middle element of the array. If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half, again taking the middle element to compare to the target value, and repeating this until the target value is found. If the search ends with the remaining half being empty, the target is not in the array.
+        
+        To keep track of the range to search the target within two indices, low and high, are used. A third one tracks the middle element of the current range.
+        
+        Binary search runs in logarithmic time, O(log n), in the worst case, where n is the length of the array.
+        """
+        tex = Tex(theory).scale(0.5)
+        self.play(Write(tex), run_time=2.0)
         self.wait(2)
-
         self.clear()
 
     def intro(self, subtitle):
