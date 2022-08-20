@@ -104,22 +104,22 @@ class BinarySearchAnimated(Scene):
         self.play(Write(title))
 
         short_description = Tex(
-            "\\justifying {In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop,\nis a search algorithm that finds the position of a target value within a sorted array.}"
+            "{In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop,\nis a search algorithm that finds the position of a target value within a sorted array.}"
         ).scale(0.5).next_to(title, DOWN, buff=MED_LARGE_BUFF)
         self.play(Write(short_description), run_time=2.0)
-        long_description = Tex("\\justifying {Binary search compares the target value to the ", "middle element", " of the array.\nIf they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,\nagain taking the middle element to compare to the target value, and repeating this until the target value is found.\nIf the search ends with the remaining half being empty, the target is not in the array.}"
+        long_description = Tex("{Binary search compares the target value to the ", "middle element", " of the array.\nIf they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,\nagain taking the middle element to compare to the target value, and repeating this until the target value is found.\nIf the search ends with the remaining half being empty, the target is not in the array.}"
                                ).scale(0.5).next_to(short_description, DOWN, buff=MED_LARGE_BUFF)
         long_description[1].set_color(ORANGE)
         self.play(Write(long_description), run_time=2.0)
 
-        long_description2 = Tex("\\justifying {Indices:", " low index ", " mid index ", " high index ", ". }").scale(
+        long_description2 = Tex("{Indices:", " low index ", " mid index ", " high index ", ". }").scale(
             0.5).next_to(long_description, DOWN, buff=MED_LARGE_BUFF)
         long_description2[1].set_color(BLUE)
         long_description2[2].set_color(ORANGE)
         long_description2[3].set_color(YELLOW)
         self.play(Write(long_description2), run_time=2.0)
 
-        complexity = Tex("\\justifying {The time complexity is O(log n), where n is the length of the array.}").scale(
+        complexity = Tex("{The time complexity is O(log n), where n is the length of the array.}").scale(
             0.5).next_to(long_description2, DOWN, buff=MED_LARGE_BUFF)
         self.play(Write(complexity), run_time=2.0)
 
