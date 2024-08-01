@@ -3,7 +3,7 @@ from typing import List
 from manim import *
 
 
-class BinarySearchAnimated(Scene):
+class BinarySearch(Scene):
     def construct(self):
 
         self.intro("Binary search")

@@ -18,7 +18,7 @@ from manim.animation.fading import FadeIn, FadeOut
 from manim.animation.creation import Unwrite
 
 
-class QueueUsingStacksVisualization(Scene):
+class Queue(Scene):
     def construct(self):
 
         self.intro("Queue implementation using two stacks")
