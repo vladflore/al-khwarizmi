@@ -8,6 +8,8 @@ Make sure [manim](https://www.manim.community/) is installed and working for you
 
 Depending on the language the implementation is written in, you may need to install the language(Java, Python) first and make sure it is working.
 
+For Python stuff it is recommended to use `uv`, see [this link](https://docs.astral.sh/uv/#getting-started) and [this link](https://docs.manim.community/en/stable/installation/uv.html#installation)
+
 # Algorithms
 
 | Status | Algorithm/Problem/Data Structure  | Language                  | Notes                                                       | Run                                                                  |
